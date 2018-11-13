@@ -1,7 +1,7 @@
 module testbench;
     reg x,y,z;
     wire s,c;
-    FADDER fl(s,c,x,y,z);
+    fadderbh fl(s,c,x,y,z);
     initial
         begin
             $monitor(,$time," x=%b,y=%b,z=%b,s=%b,c=%b",x,y,z,s,c);
