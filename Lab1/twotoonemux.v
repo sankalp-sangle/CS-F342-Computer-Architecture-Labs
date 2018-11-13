@@ -1,4 +1,4 @@
-module mux2to1 (a,b,s,f);
+module mux2to1_gl (a,b,s,f);
     input a,b,s;
     output f;
     wire c, d, nots;
@@ -9,4 +9,21 @@ module mux2to1 (a,b,s,f);
 
     or o1(f,c,d);
 
+endmodule
+
+module mux2to1_bh (a, b, s ,f);
+    input a, b, s;
+    output f;
+    reg f;
+    always@(s or a or b)
+            if(s == 1)
+                f = a;
+            else
+                f = b;
+endmodule
+
+module mux2to1_df (a, b, s, f);
+    input a, b, s;
+    output f;
+    assign f = s ? a : b;
 endmodule

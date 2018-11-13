@@ -1,5 +1,5 @@
 $date
-	Tue Nov 13 17:21:09 2018
+	Tue Nov 13 18:19:46 2018
 $end
 $version
 	Icarus Verilog
@@ -7,64 +7,81 @@ $end
 $timescale
 	1s
 $end
-$scope module testbench $end
-$var wire 1 ! f $end
-$var reg 1 " a $end
-$var reg 1 # b $end
-$var reg 1 $ s $end
-$scope module mux_gate $end
+$scope module mux2to1_df $end
+$var wire 1 ! a $end
+$var wire 1 " b $end
+$var wire 1 # f $end
+$var wire 1 $ s $end
+$upscope $end
+$scope module mux2to1_gl $end
 $var wire 1 % a $end
 $var wire 1 & b $end
 $var wire 1 ' c $end
 $var wire 1 ( d $end
-$var wire 1 ! f $end
-$var wire 1 ) nots $end
-$var wire 1 * s $end
+$var wire 1 ) f $end
+$var wire 1 * nots $end
+$var wire 1 + s $end
+$upscope $end
+$scope module testbench $end
+$var wire 1 , f $end
+$var reg 1 - a $end
+$var reg 1 . b $end
+$var reg 1 / s $end
+$scope module mux_gate $end
+$var wire 1 0 a $end
+$var wire 1 1 b $end
+$var wire 1 2 s $end
+$var reg 1 3 f $end
 $upscope $end
 $upscope $end
 $enddefinitions $end
 #0
 $dumpvars
+13
+x2
+11
+00
+x/
+1.
+0-
+1,
+z+
 x*
 x)
 x(
-0'
-1&
-0%
-x$
-1#
-0"
-x!
+x'
+z&
+z%
+z$
+z#
+z"
+z!
 $end
 #2
-0!
-0(
-0)
-1$
-1*
+03
+0,
+1/
+12
 #7
-1!
-1(
-1)
-0$
-0*
+13
+1,
+0/
+02
 #17
-0!
-0(
-0#
-0&
-1"
-1%
+03
+0,
+0.
+01
+1-
+10
 #32
-1!
-0)
-1'
-1$
-1*
+13
+1,
+1/
+12
 #52
-0!
-1)
-0'
-0$
-0*
+03
+0,
+0/
+02
 #152

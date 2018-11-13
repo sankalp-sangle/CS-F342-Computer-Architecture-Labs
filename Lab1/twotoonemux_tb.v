@@ -1,7 +1,7 @@
 module testbench;
     reg a,b,s;
     wire f;
-    mux2to1 mux_gate (a,b,s,f);
+    mux2to1_bh mux_gate (a,b,s,f);
     initial
         begin
             $monitor(,$time," a=%b, b=%b, s=%b f=%b",a,b,s,f);
