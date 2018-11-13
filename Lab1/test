@@ -4,85 +4,115 @@
 :vpi_module "system";
 :vpi_module "v2005_math";
 :vpi_module "va_math";
-S_0xbfc130 .scope module, "mux2to1_df" "mux2to1_df" 2 25;
+S_0x23bb730 .scope module, "bcdtogray_gl" "bcdtogray_gl" 2 11;
  .timescale 0 0;
-v0xbd8ee0_0 .net "a", 0 0, C4<z>; 0 drivers
-v0xc0f850_0 .net "b", 0 0, C4<z>; 0 drivers
-v0xc0f8f0_0 .net "f", 0 0, L_0xc10600; 1 drivers
-v0xc0f990_0 .net "s", 0 0, C4<z>; 0 drivers
-L_0xc10600 .functor MUXZ 1, C4<z>, C4<z>, C4<z>, C4<>;
-S_0xbfc220 .scope module, "mux2to1_gl" "mux2to1_gl" 2 1;
+L_0x24080c0 .functor BUF 1, L_0x2408ec0, C4<0>, C4<0>, C4<0>;
+L_0x24090a0 .functor XOR 1, L_0x2409180, L_0x24092c0, C4<0>, C4<0>;
+L_0x2409450 .functor XOR 1, L_0x2409500, L_0x2409680, C4<0>, C4<0>;
+L_0x24098a0 .functor XOR 1, L_0x2409900, L_0x2409a50, C4<0>, C4<0>;
+v0x23f2d30_0 .net *"_s1", 0 0, L_0x24080c0; 1 drivers
+v0x2407aa0_0 .net *"_s11", 0 0, L_0x24092c0; 1 drivers
+v0x2407b40_0 .net *"_s13", 0 0, L_0x2409450; 1 drivers
+v0x2407be0_0 .net *"_s16", 0 0, L_0x2409500; 1 drivers
+v0x2407c90_0 .net *"_s18", 0 0, L_0x2409680; 1 drivers
+v0x2407d30_0 .net *"_s20", 0 0, L_0x24098a0; 1 drivers
+v0x2407e10_0 .net *"_s23", 0 0, L_0x2409900; 1 drivers
+v0x2407eb0_0 .net *"_s25", 0 0, L_0x2409a50; 1 drivers
+v0x2407fa0_0 .net *"_s4", 0 0, L_0x2408ec0; 1 drivers
+v0x2408040_0 .net *"_s6", 0 0, L_0x24090a0; 1 drivers
+v0x2408140_0 .net *"_s9", 0 0, L_0x2409180; 1 drivers
+RS_0x7fe0c2945228 .resolv tri, L_0x2408dc0, L_0x2408fb0, L_0x24093b0, L_0x2409770;
+v0x24081e0_0 .net8 "gray", 0 3, RS_0x7fe0c2945228; 4 drivers
+v0x24082f0_0 .net "inp", 0 3, C4<zzzz>; 0 drivers
+L_0x2408dc0 .part/pv L_0x24080c0, 3, 1, 4;
+L_0x2408ec0 .part C4<zzzz>, 3, 1;
+L_0x2408fb0 .part/pv L_0x24090a0, 2, 1, 4;
+L_0x2409180 .part C4<zzzz>, 3, 1;
+L_0x24092c0 .part C4<zzzz>, 2, 1;
+L_0x24093b0 .part/pv L_0x2409450, 1, 1, 4;
+L_0x2409500 .part C4<zzzz>, 2, 1;
+L_0x2409680 .part C4<zzzz>, 1, 1;
+L_0x2409770 .part/pv L_0x24098a0, 0, 1, 4;
+L_0x2409900 .part C4<zzzz>, 1, 1;
+L_0x2409a50 .part C4<zzzz>, 0, 1;
+S_0x23bb820 .scope module, "testbench" "testbench" 3 1;
  .timescale 0 0;
-L_0xc10760 .functor NOT 1, C4<z>, C4<0>, C4<0>, C4<0>;
-L_0xc10820 .functor AND 1, C4<z>, C4<z>, C4<1>, C4<1>;
-L_0xc10930 .functor AND 1, C4<z>, L_0xc10760, C4<1>, C4<1>;
-L_0xc10a10 .functor OR 1, L_0xc10820, L_0xc10930, C4<0>, C4<0>;
-v0xc0fa40_0 .net "a", 0 0, C4<z>; 0 drivers
-v0xc0fb00_0 .net "b", 0 0, C4<z>; 0 drivers
-v0xc0fba0_0 .net "c", 0 0, L_0xc10820; 1 drivers
-v0xc0fc40_0 .net "d", 0 0, L_0xc10930; 1 drivers
-v0xc0fcf0_0 .net "f", 0 0, L_0xc10a10; 1 drivers
-v0xc0fd90_0 .net "nots", 0 0, L_0xc10760; 1 drivers
-v0xc0fe70_0 .net "s", 0 0, C4<z>; 0 drivers
-S_0xbfd230 .scope module, "testbench" "testbench" 3 1;
+RS_0x7fe0c2945468 .resolv tri, L_0x2409af0, L_0x2409d20, L_0x240a090, L_0x240a450;
+v0x2408c70_0 .net8 "gray", 0 3, RS_0x7fe0c2945468; 4 drivers
+v0x2408d10_0 .var "inp", 0 3;
+S_0x2408390 .scope module, "bcdtogray" "bcdtogray_df" 3 5, 2 1, S_0x23bb820;
  .timescale 0 0;
-v0xc102f0_0 .var "a", 0 0;
-v0xc103c0_0 .var "b", 0 0;
-v0xc10470_0 .net "f", 0 0, v0xc101a0_0; 1 drivers
-v0xc10520_0 .var "s", 0 0;
-S_0xc0ff10 .scope module, "mux_gate" "mux2to1_bh" 3 4, 2 14, S_0xbfd230;
- .timescale 0 0;
-v0xc10040_0 .net "a", 0 0, v0xc102f0_0; 1 drivers
-v0xc10100_0 .net "b", 0 0, v0xc103c0_0; 1 drivers
-v0xc101a0_0 .var "f", 0 0;
-v0xc10240_0 .net "s", 0 0, v0xc10520_0; 1 drivers
-E_0xc0fcc0 .event edge, v0xc10100_0, v0xc10040_0, v0xc10240_0;
-    .scope S_0xc0ff10;
+L_0x2409f90 .functor XOR 1, L_0x2409dc0, L_0x2409e60, C4<0>, C4<0>;
+L_0x240a300 .functor XOR 1, L_0x240a1c0, L_0x240a260, C4<0>, C4<0>;
+L_0x2409f00 .functor XOR 1, L_0x240a4f0, L_0x240a5f0, C4<0>, C4<0>;
+v0x2408480_0 .net *"_s10", 0 0, L_0x2409f90; 1 drivers
+v0x2408540_0 .net *"_s15", 0 0, L_0x240a1c0; 1 drivers
+v0x24085e0_0 .net *"_s17", 0 0, L_0x240a260; 1 drivers
+v0x2408680_0 .net *"_s18", 0 0, L_0x240a300; 1 drivers
+v0x2408700_0 .net *"_s23", 0 0, L_0x240a4f0; 1 drivers
+v0x24087a0_0 .net *"_s25", 0 0, L_0x240a5f0; 1 drivers
+v0x2408840_0 .net *"_s26", 0 0, L_0x2409f00; 1 drivers
+v0x24088e0_0 .net *"_s3", 0 0, L_0x2409be0; 1 drivers
+v0x2408980_0 .net *"_s7", 0 0, L_0x2409dc0; 1 drivers
+v0x2408a20_0 .net *"_s9", 0 0, L_0x2409e60; 1 drivers
+v0x2408ac0_0 .alias "gray", 0 3, v0x2408c70_0;
+v0x2408b60_0 .net "inp", 0 3, v0x2408d10_0; 1 drivers
+L_0x2409af0 .part/pv L_0x2409be0, 3, 1, 4;
+L_0x2409be0 .part v0x2408d10_0, 3, 1;
+L_0x2409d20 .part/pv L_0x2409f90, 2, 1, 4;
+L_0x2409dc0 .part v0x2408d10_0, 3, 1;
+L_0x2409e60 .part v0x2408d10_0, 2, 1;
+L_0x240a090 .part/pv L_0x240a300, 1, 1, 4;
+L_0x240a1c0 .part v0x2408d10_0, 2, 1;
+L_0x240a260 .part v0x2408d10_0, 1, 1;
+L_0x240a450 .part/pv L_0x2409f00, 0, 1, 4;
+L_0x240a4f0 .part v0x2408d10_0, 1, 1;
+L_0x240a5f0 .part v0x2408d10_0, 0, 1;
+    .scope S_0x23bb820;
 T_0 ;
-    %wait E_0xc0fcc0;
-    %load/v 8, v0xc10240_0, 1;
-    %mov 9, 0, 2;
-    %cmpi/u 8, 1, 3;
-    %jmp/0xz  T_0.0, 4;
-    %load/v 8, v0xc10040_0, 1;
-    %set/v v0xc101a0_0, 8, 1;
-    %jmp T_0.1;
-T_0.0 ;
-    %load/v 8, v0xc10100_0, 1;
-    %set/v v0xc101a0_0, 8, 1;
-T_0.1 ;
-    %jmp T_0;
-    .thread T_0, $push;
-    .scope S_0xbfd230;
-T_1 ;
-    %vpi_call 3 7 "$monitor", " ", $time, " a=%b, b=%b, s=%b f=%b", v0xc102f0_0, v0xc103c0_0, v0xc10520_0, v0xc10470_0;
+    %vpi_call 3 8 "$monitor", " ", $time, " input = %b,  gray = %b", v0x2408d10_0, v0x2408c70_0;
     %delay 0, 0;
-    %set/v v0xc102f0_0, 0, 1;
-    %set/v v0xc103c0_0, 1, 1;
-    %delay 2, 0;
-    %set/v v0xc10520_0, 1, 1;
+    %set/v v0x2408d10_0, 0, 4;
     %delay 5, 0;
-    %set/v v0xc10520_0, 0, 1;
+    %movi 8, 1, 4;
+    %set/v v0x2408d10_0, 8, 4;
+    %delay 5, 0;
+    %movi 8, 2, 4;
+    %set/v v0x2408d10_0, 8, 4;
+    %delay 5, 0;
+    %movi 8, 3, 4;
+    %set/v v0x2408d10_0, 8, 4;
+    %delay 5, 0;
+    %movi 8, 4, 4;
+    %set/v v0x2408d10_0, 8, 4;
+    %delay 5, 0;
+    %movi 8, 5, 4;
+    %set/v v0x2408d10_0, 8, 4;
+    %delay 5, 0;
+    %movi 8, 6, 4;
+    %set/v v0x2408d10_0, 8, 4;
+    %delay 5, 0;
+    %movi 8, 7, 4;
+    %set/v v0x2408d10_0, 8, 4;
+    %delay 5, 0;
+    %movi 8, 8, 4;
+    %set/v v0x2408d10_0, 8, 4;
+    %delay 5, 0;
+    %movi 8, 9, 4;
+    %set/v v0x2408d10_0, 8, 4;
     %delay 10, 0;
-    %set/v v0xc102f0_0, 1, 1;
-    %set/v v0xc103c0_0, 0, 1;
-    %delay 15, 0;
-    %set/v v0xc10520_0, 1, 1;
-    %delay 20, 0;
-    %set/v v0xc10520_0, 0, 1;
-    %delay 100, 0;
-    %vpi_call 3 14 "$finish";
+    %vpi_call 3 19 "$finish";
+    %end;
+    .thread T_0;
+    .scope S_0x23bb820;
+T_1 ;
+    %vpi_call 3 23 "$dumpfile", "output.vcd";
+    %vpi_call 3 24 "$dumpvars";
     %end;
     .thread T_1;
-    .scope S_0xbfd230;
-T_2 ;
-    %vpi_call 3 18 "$dumpfile", "output.vcd";
-    %vpi_call 3 19 "$dumpvars";
-    %end;
-    .thread T_2;
 # The file index is used to find the file name in the following table.
 :file_names 4;
     "N/A";
     "<interactive>";
-    "twotoonemux.v";
-    "twotoonemux_tb.v";
+    "bcdtogray.v";
+    "bcdtogray_tb.v";
