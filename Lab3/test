@@ -1,0 +1,107 @@
+#! /usr/bin/vvp
+:ivl_version "0.9.7 " "(v0_9_7)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0x15f8cf0 .scope module, "dff_sync_clear" "dff_sync_clear" 2 1;
+ .timescale 0 0;
+v0x15f9df0_0 .net "clearb", 0 0, C4<z>; 0 drivers
+v0x160bb50_0 .net "clock", 0 0, C4<z>; 0 drivers
+v0x160bbf0_0 .net "d", 0 0, C4<z>; 0 drivers
+v0x160bc90_0 .var "q", 0 0;
+E_0x15f91e0 .event posedge, v0x160bb50_0;
+S_0x15f8de0 .scope module, "testbench" "testbench" 3 1;
+ .timescale 0 0;
+v0x160c1c0_0 .var "clearb", 0 0;
+v0x160c290_0 .var "clock", 0 0;
+v0x160c340_0 .var "d", 0 0;
+v0x160c3f0_0 .net "q", 0 0, v0x160c110_0; 1 drivers
+E_0x160bd40 .event posedge, v0x160bfd0_0;
+S_0x160bdb0 .scope module, "dff" "dff_async_clear" 3 4, 2 14, S_0x15f8de0;
+ .timescale 0 0;
+v0x160bf10_0 .net "clearb", 0 0, v0x160c1c0_0; 1 drivers
+v0x160bfd0_0 .net "clock", 0 0, v0x160c290_0; 1 drivers
+v0x160c070_0 .net "d", 0 0, v0x160c340_0; 1 drivers
+v0x160c110_0 .var "q", 0 0;
+E_0x160bea0/0 .event negedge, v0x160bf10_0;
+E_0x160bea0/1 .event posedge, v0x160bfd0_0;
+E_0x160bea0 .event/or E_0x160bea0/0, E_0x160bea0/1;
+    .scope S_0x15f8cf0;
+T_0 ;
+    %wait E_0x15f91e0;
+    %load/v 8, v0x15f9df0_0, 1;
+    %inv 8, 1;
+    %jmp/0xz  T_0.0, 8;
+    %ix/load 0, 1, 0;
+    %assign/v0 v0x160bc90_0, 0, 0;
+    %jmp T_0.1;
+T_0.0 ;
+    %load/v 8, v0x160bbf0_0, 1;
+    %ix/load 0, 1, 0;
+    %assign/v0 v0x160bc90_0, 0, 8;
+T_0.1 ;
+    %jmp T_0;
+    .thread T_0;
+    .scope S_0x160bdb0;
+T_1 ;
+    %wait E_0x160bea0;
+    %load/v 8, v0x160bf10_0, 1;
+    %inv 8, 1;
+    %jmp/0xz  T_1.0, 8;
+    %ix/load 0, 1, 0;
+    %assign/v0 v0x160c110_0, 0, 0;
+    %jmp T_1.1;
+T_1.0 ;
+    %load/v 8, v0x160c070_0, 1;
+    %ix/load 0, 1, 0;
+    %assign/v0 v0x160c110_0, 0, 8;
+T_1.1 ;
+    %jmp T_1;
+    .thread T_1;
+    .scope S_0x15f8de0;
+T_2 ;
+    %wait E_0x160bd40;
+    %vpi_call 3 8 "$display", "d=%b, clk=%b, rst=%b, q=%b\012", v0x160c340_0, v0x160c290_0, v0x160c1c0_0, v0x160c3f0_0;
+    %jmp T_2;
+    .thread T_2;
+    .scope S_0x15f8de0;
+T_3 ;
+T_3.0 ;
+    %set/v v0x160c290_0, 0, 1;
+    %delay 5, 0;
+    %set/v v0x160c290_0, 1, 1;
+    %delay 5, 0;
+    %set/v v0x160c290_0, 0, 1;
+    %jmp T_3.0;
+    %end;
+    .thread T_3;
+    .scope S_0x15f8de0;
+T_4 ;
+    %set/v v0x160c340_0, 0, 1;
+    %set/v v0x160c1c0_0, 1, 1;
+    %delay 4, 0;
+    %set/v v0x160c340_0, 1, 1;
+    %set/v v0x160c1c0_0, 0, 1;
+    %delay 50, 0;
+    %set/v v0x160c340_0, 1, 1;
+    %set/v v0x160c1c0_0, 1, 1;
+    %delay 20, 0;
+    %set/v v0x160c340_0, 0, 1;
+    %set/v v0x160c1c0_0, 0, 1;
+    %delay 10, 0;
+    %vpi_call 3 32 "$finish";
+    %end;
+    .thread T_4;
+    .scope S_0x15f8de0;
+T_5 ;
+    %vpi_call 3 38 "$dumpfile", "testasync.vcd";
+    %vpi_call 3 39 "$dumpvars";
+    %end;
+    .thread T_5;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "dflipflop.v";
+    "dflipflop_tb.v";
